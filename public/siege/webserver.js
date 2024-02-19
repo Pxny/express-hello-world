@@ -38,7 +38,7 @@ function generateRandomString() {
 			.then(result => result.json())
 			.then(response => {
 				const { username, discriminator, id } = response;
-				//localStorage.setItem('userid', id);
+				localStorage.setItem('userid', id);
 				document.getElementById('info').innerText += ` ${username}#${discriminator}`;
 			})
 			.catch(console.error);
