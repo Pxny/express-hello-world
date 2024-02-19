@@ -26,6 +26,17 @@ Primary use:
   src: url('../fonts/Playlist/Playlist Script.otf'); 
 }
 
+@keyframes fadeIn {
+  from {top: 20%; opacity: 0;}
+  to {top: 100; opacity: 1;}
+  
+}
+
+@-webkit-keyframes fadeIn {
+  from {top: 20%; opacity: 0;}
+  to {top: 100; opacity: 1;}
+  
+}
 
 
 /*//////////////////////////////////////////////////////////////////
