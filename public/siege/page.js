@@ -19,6 +19,7 @@ function toggleActivation(element) {
 		document.getElementById('list').innerHTML = list;
 
 		try {
+			const userid = localStorage.getItem('userid');
 			fetch("https://94a1b373-a074-4db5-a3cf-4325b9cddd12-00-3tmzfufo54kut.spock.repl.co/webservice/users", {
 				method: "POST",
 				headers: {
@@ -28,7 +29,7 @@ function toggleActivation(element) {
 					'Connection': 'keep-alive'
 				},
 				body: new URLSearchParams({
-					'user_id': '391400441163939840',
+					'user_id': `${userid}`,
 					'type': 'SET_OPLIST',
 					'list': `${list}`
 				})
