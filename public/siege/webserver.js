@@ -40,6 +40,7 @@ function generateRandomString() {
 				const { username, discriminator, id } = response;
 				localStorage.setItem('userid', id);
 				localStorage.setItem('disc_username', username);
+				document.getElementById('info').innerText += ` ${username}`;
 			})
 			.catch(console.error);
 		}
