@@ -27,6 +27,9 @@ function generateRandomString() {
 		}else {
 			console.log('Huzzah! Successful authentication journey!');
 			document.getElementById('login').style.display = 'block';
+		}
+
+		if (!localStorage.getItem('userid')){
 			fetch('https://discord.com/api/users/@me', {
 				headers: {
 					authorization: `${tokenType} ${accessToken}`,
@@ -35,13 +38,11 @@ function generateRandomString() {
 			.then(result => result.json())
 			.then(response => {
 				const { username, discriminator, id } = response;
-				if (!localStorage.getItem('userid')){
-					localStorage.setItem('userid', id);
-				}
-				document.getElementById('info').innerText += ` ${username}#${discriminator}`;
+				localStorage.setItem('userid', id);
+				localStorage.setItem('disc_username', username);
 			})
 			.catch(console.error);
 		}
-
+		document.getElementById('info').innerText += ` ${localStorage.getItem('disc_username')}`;
 		
 	};
