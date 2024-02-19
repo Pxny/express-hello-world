@@ -21,15 +21,12 @@ function generateRandomString() {
 			//return (document.getElementById('login').style.display = 'block');
 		}
 		
-		if (localStorage.getItem('oauth-state') !== atob(decodeURIComponent(state))) {
+		if (!localStorage.getItem('userid') && localStorage.getItem('oauth-state') !== atob(decodeURIComponent(state))) {
 			return console.log('You may have been clickjacked!');
 
 		}else {
 			console.log('Huzzah! Successful authentication journey!');
 			document.getElementById('login').style.display = 'block';
-		}
-
-		if (!localStorage.getItem('userid')){
 			fetch('https://discord.com/api/users/@me', {
 				headers: {
 					authorization: `${tokenType} ${accessToken}`,
@@ -38,9 +35,13 @@ function generateRandomString() {
 			.then(result => result.json())
 			.then(response => {
 				const { username, discriminator, id } = response;
-				localStorage.setItem('userid', id);
+				if (!localStorage.getItem('userid')){
+					localStorage.setItem('userid', id);
+				}
 				document.getElementById('info').innerText += ` ${username}#${discriminator}`;
 			})
 			.catch(console.error);
 		}
+
+		
 	};
