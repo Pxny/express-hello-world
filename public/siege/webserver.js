@@ -43,7 +43,9 @@ function generateRandomString() {
 				document.getElementById('info').innerText += ` ${username}`;
 			})
 			.catch(console.error);
+		}else{
+			document.getElementById('info').innerText += ` ${localStorage.getItem('disc_username')}`;
 		}
-		document.getElementById('info').innerText += ` ${localStorage.getItem('disc_username')}`;
+		
 		
 	};
